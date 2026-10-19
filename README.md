@@ -1,6 +1,6 @@
-# Pace Maker v.12
+# Pace Maker v.13
 
-Native HTTP load testing for macOS — fire configurable traffic at any endpoint and watch it respond in real time.
+Native HTTP load testing for macOS — fire configurable traffic with any HTTP method at any endpoint and watch it respond in real time.
 
 ![Pace Maker running a load test: live chart with the settings inspector open](images/main_window.png)
 
@@ -27,9 +27,17 @@ The chart plots **Sent**, **Received**, **Failures**, and **Error Rate** as sepa
 
 ### ⚙️ Settings inspector — dial in exactly how hard to push
 
-Every setting lives in one native inspector beside the chart: the target URL, transport and User-Agent preset; the total **target RPS**, maximum connections and backpressure queue depth; and stop conditions — total requests, a duration, or both. Toggle it from the toolbar; your last configuration is remembered between launches.
+Every setting lives in one native inspector beside the chart: the target URL, **HTTP method** and User-Agent preset; the total **target RPS**, maximum connections and backpressure queue depth; and stop conditions — total requests, a duration, or both. Toggle it from the toolbar; your last configuration is remembered between launches.
 
-<img src="images/settings.png" alt="Settings inspector with Target, Load and Stop When sections" width="322">
+Pick any method — **GET, HEAD, POST, PUT, PATCH, DELETE, or OPTIONS**. Methods that change data show a reminder to point them at a test environment.
+
+<img src="images/settings.png" alt="Settings inspector with the POST method selected" width="322">
+
+### ✍️ Load — compose the request body
+
+The **Load** tab, next to Chart, Stats, and Texts, holds the body sent with every POST, PUT, PATCH, or DELETE request. Pick a content type (JSON, form, plain text, or XML), write the body in a roomy monospaced editor with **JSON and XML syntax highlighting** that keeps your quotes and dashes exactly as typed, and watch the live size and JSON check below it. A Content-Type you set under Headers takes precedence. For GET, HEAD, and OPTIONS the tab explains that no body is sent and offers a one-click switch to POST.
+
+![Load tab with a JSON request body](images/load.png)
 
 ### 📊 Stats — the numbers that matter
 
@@ -39,7 +47,7 @@ A grid of live stat cards: elapsed time, sent, succeeded, failed, and shed reque
 
 ### 🔍 Request & response viewer
 
-See the exact request being fired — method, path, headers, and User-Agent — and inspect live responses as they come back, status line and headers included. Toggle **Sliding** to keep a rolling window of the most recent responses, cap how many you retain, and turn on **Truncated** to collapse long bodies.
+See the exact request being fired — method, path, headers, User-Agent, and body — and inspect live responses as they come back, status line and headers included. Toggle **Sliding** to keep a rolling window of the most recent responses, cap how many you retain, and turn on **Truncated** to collapse long bodies.
 
 ![Texts view showing the request and recent responses](images/texts.png)
 
@@ -80,7 +88,7 @@ HTTP load testing ships today. The architecture is already protocol-agnostic, wi
 
 1. [Download the latest release](https://github.com/eugenezimin/Pace-Maker/releases/latest) and open **Pace Maker**.
 2. Enter a target URL in the settings inspector.
-3. Set your target RPS and maximum connections.
+3. Choose the HTTP method, then set your target RPS and maximum connections. For POST, PUT, PATCH, or DELETE, write the body in the **Load** tab.
 4. Choose a stop condition — total requests, a duration, or both.
 5. Press **Start** (⌘R) and watch the chart.
 
