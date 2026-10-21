@@ -1,4 +1,4 @@
-# Pace Maker v.14
+# Pace Maker v.14.1
 
 Native HTTP load testing for macOS — fire configurable traffic with any HTTP method at any endpoint and watch it respond in real time.
 
