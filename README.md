@@ -1,4 +1,4 @@
-# Pace Maker v.14.1
+# Pace Maker v.15
 
 Native HTTP load testing for macOS — fire configurable traffic with any HTTP method at any endpoint and watch it respond in real time.
 
@@ -94,13 +94,12 @@ Pace Maker is built on Swift structured concurrency end to end:
 
 The result: when an endpoint can't keep up, you see the achieved RPS honestly drop below target instead of getting a misleading "everything's fine" reading.
 
-## Roadmap
+## Privacy & safety
 
-HTTP load testing ships today. The architecture is already protocol-agnostic, with these transports on the way:
-
-- **gRPC** endpoint testing
-- **WebSocket** load
-- **Raw TCP** load
+- Pace Maker talks only to the target you enter: no accounts, analytics or telemetry. Both `https://` and plain `http://` targets work; other URL schemes are refused.
+- Redirects are never followed. A 3xx shows up as the response, so the load always lands on the URL you entered and never on another host.
+- The app is sandboxed. Settings live in `~/Library/Containers/eezzzi.PaceMaker/`; values of credential headers (`Authorization`, `Cookie`, API keys and the like) are kept in your login keychain instead. Request bodies are saved with the other settings, so avoid putting secrets in them.
+- Only load-test servers you own or have permission to test. A new install starts pointed at `http://localhost:8080`.
 
 ## Requirements
 
